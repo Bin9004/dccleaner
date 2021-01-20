@@ -1,0 +1,35 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+import urllib.request
+
+driver = webdriver.Chrome()
+driver.get("")
+elem = driver.find_element_by_xpath("")
+elem.send_keys("")
+elem.send_keys(Keys.RETURN)
+gall_post = driver.find_elements_by_xpath("")
+gall_comment = driver.find_elements_by_xapth("")
+
+    
+SCROLL_PAUSE_TIME = 1.5
+
+last_height = driver.execute_script("return document.body.scrollHeight")
+
+while True:
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(SCROLL_PAUSE_TIME)
+    new_height = driver.execute_script("return document.body.scrollHeight")
+    if new_height == last_height:
+        try:
+            driver.find_element_by_css_selector("").click()
+            last_height = new_height
+        except:
+            break
+
+
+
+for post in gall_post:
+    #post 클릭
+    time.sleep(2)
+    #delete post
